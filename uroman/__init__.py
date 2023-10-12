@@ -1,10 +1,11 @@
+import json
 import subprocess
 import pkg_resources
 
 from langcodes import Language
 
 
-def uroman(input_string: str, language: str = None, chart: bool = False) -> str:
+def uroman(input_string: str, language: str = None, chart: bool = False):
     script_path = pkg_resources.resource_filename(__name__, "uroman-pl/bin/uroman.pl")
     command = ["perl", script_path]
 
@@ -25,4 +26,10 @@ def uroman(input_string: str, language: str = None, chart: bool = False) -> str:
         raise OSError(f"uroman.pl failed with error code {process.returncode}: {stderr.decode()}")
 
     # Return the output as a string
-    return stdout.decode()
+    output = stdout.decode().strip()
+
+    if chart:
+        # Return the output as a dict
+        return json.loads(output)
+    
+    return output
