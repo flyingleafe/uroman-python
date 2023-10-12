@@ -1,0 +1,3 @@
+langcodes>=3.3.0
+setuptools
+build

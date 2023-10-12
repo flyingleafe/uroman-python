@@ -1,0 +1,4 @@
+include uroman/uroman-pl/bin/**
+include uroman/uroman-pl/data/**
+include uroman/uroman-pl/lib/**
+include uroman/uroman-pl/lib/**/*
